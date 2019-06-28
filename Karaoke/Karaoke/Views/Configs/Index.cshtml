@@ -1,0 +1,131 @@
+﻿@model B3.Models.ConfigModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Styles{
+
+}
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+    <a class="btn btn-md green " data-toggle="modal" href="#large"> Create New </a>
+</p>
+<div class="portlet-body">
+    <div class="table-container">
+        <div class="table-actions-wrapper">
+            <span> </span>
+            <input type="text" class="input-inline form-control form-filter input-sm" />
+            <button class="btn btn-sm green table-group-action-submit">
+                <i class="fa fa-check"></i> Submit
+            </button>
+        </div>
+        <table class="table table-hover" id="datatable_ajax">
+            <thead>
+                <tr>
+                    <th>
+                        Tiêu Đề
+                    </th>
+                    <th>
+                        Địa Chỉ
+                    </th>
+                    <th>
+                        Hot Line
+                    </th>
+                    <th>
+                        Thời Gian
+                    </th>
+                    <th>
+                        Trạng Thái
+                    </th>
+                    <th>
+                        Tạo Ngày
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade bs-modal-lg" id="large" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Create Config</h4>
+            </div>
+            <form  id="form_create" class="form-horizontal" method="post">
+                <div class="modal-body">
+
+                    <div class="form-body">
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                        </div>
+                        <div class="alert alert-success display-hide">
+                            <button class="close" data-close="alert"></button> Your form validation is successful!
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" asp-for="Title">
+                                Tiêu Đề
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input asp-for="Title" data-required="1" class="form-control" />                    
+                                <span asp-validation-for="Title" class="help-block help-block-errorr"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" asp-for="Address">
+                                Địa Chỉ
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" asp-for="Address" data-required="1" class="form-control" />
+                                <span asp-validation-for="Address" class="help-block help-block-errorr"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" asp-for="HotLine">
+                                Số điện thoại
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" asp-for="HotLine" data-required="1" class="form-control" />
+                                <span asp-validation-for="HotLine" class="help-block help-block-errorr"></span>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Thời Gian Mở Cửa
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" name="OpenTime" data-required="1" class="form-control" />
+                                <span asp-validation-for="OpenTime" class="help-block help-block-errorr"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn green">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section Scripts{
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="~/assets/global/scripts/datatable.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="~/js/ajax/table-datatables-ajax-configs.js"></script>
+}
